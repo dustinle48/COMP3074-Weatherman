@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Provider } from 'react-redux';
+import { Store } from './redux/store';
 
 import Main from './components/Main'
 import Settings from './components/Settings';
@@ -12,12 +13,12 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <SafeAreaProvider>
+    <Provider store={Store}>
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen 
             name="Main" 
-            component={Main} 
+            component={Main}
             options={{tabBarIcon: () => (<MaterialCommunityIcons name="home" size={26}/>)}}
           />
           <Tab.Screen
@@ -27,8 +28,8 @@ export default function App() {
           />
         </Tab.Navigator>
       </NavigationContainer>
-    </SafeAreaProvider>
-  );
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -38,4 +39,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})

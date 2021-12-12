@@ -1,3 +1,3 @@
-module.exports = {
-    unit: 'metric'
-}
+import React from "react";
+
+export const ConfigContext = React.createContext();
